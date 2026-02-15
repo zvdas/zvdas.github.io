@@ -12,7 +12,7 @@ export class AboutComponent implements OnInit {
 
   techStack: string[] = ['JavaScript', 'NodeJS', 'Express', 'React', 'Angular', 'Bootstrap', 'Angular Material', 'MongoDB', 'MySQL', 'REST APIs', 'Swagger', 'Postman'];
   // Python,Django,Flask,FastAPI,Next JS
-  yearsSpent: number = new Date().getFullYear() - 2022;
+  yearsSpent: number = new Date().getFullYear() - 2023;
 
   constructor() { }
 
