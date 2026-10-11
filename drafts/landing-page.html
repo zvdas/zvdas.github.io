@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Judeson Rodriguez</title>
+<meta name="description" content="Judeson Rodriguez, full stack developer and tech lead building Angular, Firebase and Node.js applications.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600&display=swap">
+<style>
+  /* Layout: one 880px column, sections parted by 96px of air; type and weight carry the hierarchy. */
+  :root {
+    --bg: #EEF1F4;
+    --text: #12233A;
+    --accent: #1E8E5A;
+    --surface: #FFFFFF;
+    --font: "Sora", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --body: 17px;
+    --small: 14px;
+    --headline: 48px;
+    --section-gap: 96px;
+    --measure: 66ch;
+  }
+
+  /* House palette is fixed and light; set explicitly so it holds on any host theme. */
+  html { background: var(--bg); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: var(--body);
+    font-weight: 300;
+    line-height: 1.65;
+    padding: 0 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * { box-sizing: border-box; border-radius: 0; box-shadow: none; }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-block: 40px var(--section-gap);
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+  }
+
+  h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+  ul, ol { padding: 0; list-style: none; }
+  strong, h2, h3, dt { font-weight: 600; }
+  p, li, dd { max-width: var(--measure); }
+
+  a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+  }
+  a:hover { text-decoration-thickness: 2px; }
+
+  :focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 4px;
+  }
+
+  /* Masthead */
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px 24px;
+  }
+  .masthead strong { font-size: var(--body); }
+  .masthead nav { display: flex; flex-wrap: wrap; gap: 8px 20px; font-size: var(--small); }
+
+  /* Hero: one sentence, one button */
+  .hero { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; }
+  .hero h1 {
+    font-size: var(--headline);
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 22ch;
+    text-wrap: balance;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--surface);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    line-height: 1.2;
+  }
+  .button:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* Sections */
+  section { display: flex; flex-direction: column; gap: 32px; }
+  .section-head { display: flex; flex-direction: column; gap: 8px; }
+  .section-head h2 { font-size: var(--body); }
+
+  hr {
+    border: 0;
+    border-top: 1px solid var(--text);
+    margin: 0;
+  }
+
+  /* Work history: dates in a left column, detail on the right */
+  .roles { display: flex; flex-direction: column; gap: 56px; }
+  .role {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 8px 32px;
+  }
+  .role .when {
+    font-size: var(--small);
+    font-variant-numeric: tabular-nums;
+    padding-top: 3px;
+  }
+  .role h3 { font-size: var(--body); }
+  .role .org { font-weight: 300; }
+  .role ul { display: flex; flex-direction: column; gap: 10px; margin-top: 12px; }
+  .role li { padding-left: 18px; position: relative; }
+  .role li::before { content: "–"; position: absolute; left: 0; }
+
+  /* Projects */
+  .projects { display: flex; flex-direction: column; gap: 28px; }
+  .project {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 4px 32px;
+  }
+  .project .stack { font-size: var(--small); padding-top: 3px; }
+  .project h3 { font-size: var(--body); }
+  .project .links { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: var(--small); margin-top: 6px; }
+
+  /* Skills */
+  .skills { display: flex; flex-wrap: wrap; gap: 6px 0; max-width: var(--measure); }
+  .skills li:not(:last-child)::after { content: "·"; padding: 0 12px; }
+
+  /* Contact */
+  .contact { display: flex; flex-direction: column; gap: 20px; }
+  .contact dl { display: grid; grid-template-columns: 180px 1fr; gap: 12px 32px; }
+  .contact dd { overflow-wrap: anywhere; }
+
+  footer { font-size: var(--small); }
+
+  @media (max-width: 640px) {
+    :root { --section-gap: 72px; }
+    .hero h1 { font-size: 36px; }
+    .role, .project, .contact dl { grid-template-columns: 1fr; }
+    .contact dl dd + dt { margin-top: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="masthead">
+    <strong>Judeson Rodriguez</strong>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="wrap" style="padding:0">
+    <section class="hero" aria-label="Introduction">
+      <h1>I build Angular and Node.js applications that thousands of students rely on every day.</h1>
+      <a class="button" href="#projects">See my projects</a>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Work history</h2>
+        <p>Full stack developer and technical lead since 2023, now moving deeper into backend and application development with Node.js and REST APIs.</p>
+      </div>
+
+      <div class="roles">
+        <article class="role">
+          <p class="when">Jan 2025 – present</p>
+          <div>
+            <h3>Full stack developer, technical lead <span class="org">at ThinkTac</span></h3>
+            <ul>
+              <li>Architected and delivered the student dashboard, assessment engine and analytics module, serving 5,000+ active users at 99.5% uptime.</li>
+              <li>Mentor 5 junior developers on Angular, TypeScript and code review, cutting onboarding time by 40%.</li>
+              <li>Led the TypeScript migration across 15 Angular components, reducing runtime errors by 45%.</li>
+              <li>Set frontend and backend coding standards that lifted team velocity by 30%.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <p class="when">Jun 2023 – Jan 2025</p>
+          <div>
+            <h3>Full stack developer <span class="org">at ThinkTac</span></h3>
+            <ul>
+              <li>Wrote 10+ Firebase Cloud Functions in Node.js for backups, auth and batch messaging, handling 50,000+ events a day at 200ms average.</li>
+              <li>Built a real-time enrollment system on Firebase Auth and Firestore for 2,000+ concurrent users under 300ms.</li>
+              <li>Cut bundle size by 40% with lazy loading and tree shaking, taking page load from 4.2s to 2.5s.</li>
+              <li>Built 20+ reusable Angular Material and Tailwind components, speeding new features by 35%.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="role">
+          <p class="when">Nov 2022 – May 2023</p>
+          <div>
+            <h3>SDE intern <span class="org">at Angular Wiki</span></h3>
+            <ul>
+              <li>Built a drug inventory module with real-time stock tracking for 200+ products, reducing entry errors by 60%.</li>
+              <li>Generated compliance reports with PDFMake for 500+ prescription orders a month.</li>
+              <li>Scraped data for 2,000+ products with Python, taking weekly research from 40 hours to 2.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <h2 id="projects-title">Projects</h2>
+        <p>Seven complete apps, each with a live build and its source. The two Render apps can take up to two minutes to wake.</p>
+      </div>
+
+      <div class="projects">
+        <article class="project">
+          <p class="stack">Angular · Firestore</p>
+          <div>
+            <h3>Online test application</h3>
+            <p>A quiz platform for setting and taking timed tests.</p>
+            <p class="links">
+              <a href="https://onlinetestapp-1e50c.web.app" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/OnlineTestApp" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="stack">Angular · Firestore</p>
+          <div>
+            <h3>Food blog</h3>
+            <p>A recipe blog with posting and browsing backed by Firebase.</p>
+            <p class="links">
+              <a href="https://foodblogapp-d6a7f.web.app" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/FoodBlogApp" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="stack">Angular · Three.js · Firestore</p>
+          <div>
+            <h3>3D model viewer</h3>
+            <p>Upload, list and render 3D models in the browser.</p>
+            <p class="links">
+              <a href="https://threedmodelapp.web.app" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/3dmodelapp" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="stack">React · Redux · Firestore</p>
+          <div>
+            <h3>Event finder</h3>
+            <p>Search and browse local events, with state managed in Redux.</p>
+            <p class="links">
+              <a href="https://eventfinderapp-2d94f.web.app" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/EventFinderApp" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="stack">React · Redux · Firestore</p>
+          <div>
+            <h3>Pokémon search</h3>
+            <p>Paginated search across the Pokédex.</p>
+            <p class="links">
+              <a href="https://pokemonsearchapp-a72a7.web.app" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/PokemonSearchApp" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="stack">Express · MongoDB</p>
+          <div>
+            <h3>Learning management system</h3>
+            <p>Course creation and enrollment with separate admin and student roles.</p>
+            <p class="links">
+              <a href="https://lms-gq7o.onrender.com/" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/LearningManagementSystem" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="project">
+          <p class="stack">Express · MongoDB</p>
+          <div>
+            <h3>Online music store</h3>
+            <p>A storefront for buying music and managing a personal library.</p>
+            <p class="links">
+              <a href="https://oms-n7hw.onrender.com" target="_blank" rel="noopener noreferrer">Open the app</a>
+              <a href="https://github.com/zvdas/OnlineMusicStore" target="_blank" rel="noopener noreferrer">Read the code</a>
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="skills-title">
+      <div class="section-head">
+        <h2 id="skills-title">Tools I work with</h2>
+      </div>
+      <ul class="skills">
+        <li>TypeScript</li><li>JavaScript</li><li>Angular</li><li>Angular Material</li><li>React</li><li>Redux</li>
+        <li>Node.js</li><li>Express</li><li>Firebase</li><li>Firestore</li><li>MongoDB</li><li>MySQL</li>
+        <li>REST APIs</li><li>Swagger</li><li>Postman</li><li>Tailwind CSS</li><li>Python</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="section-head">
+        <h2 id="contact-title">Contact</h2>
+        <p>Open to backend and full stack roles. Email is the fastest way to reach me.</p>
+      </div>
+      <dl>
+        <dt>Email</dt>
+        <dd>judeson.rodriguez@gmail.com · <a href="mailto:judeson.rodriguez@gmail.com">Write an email</a></dd>
+        <dt>LinkedIn</dt>
+        <dd><a href="https://www.linkedin.com/in/zvdas" target="_blank" rel="noopener noreferrer">View my LinkedIn profile</a></dd>
+        <dt>GitHub</dt>
+        <dd><a href="https://github.com/zvdas" target="_blank" rel="noopener noreferrer">Browse my repositories</a></dd>
+        <dt>Resume</dt>
+        <dd><a href="https://zvdas.com/assets/files/Resume%20Judeson%20Rodriguez%20Full%20Stack%20Developer.pdf" target="_blank" rel="noopener noreferrer">Open my resume (PDF)</a></dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer>zvdas.com · Judeson Rodriguez</footer>
+</div>
+</body>
+</html>
