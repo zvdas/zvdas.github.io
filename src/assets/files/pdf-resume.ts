@@ -151,7 +151,7 @@ export function PdfResume() {
                         ul: [
                             'Category: Web Development',
                             'Designation: Full Stack Developer Intern',
-                            'Timeline: June 2023 to Present',
+                            'Timeline: June 2023 to July 2026',
                             'Duties: Frontend Web Development using Angular (with Angular Material & Tailwind CSS) and Firebase as backend',
                         ]
                     },
