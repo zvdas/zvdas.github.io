@@ -38,7 +38,7 @@ export async function PdfResume2026() {
             },
             {
                 style: 'titleSecondary',
-                text: 'January 2025 – Present | Bengaluru, India',
+                text: 'January 2025 – July 2026 | Bengaluru, India',
             },
             {
                 style: 'titleSecondary',
