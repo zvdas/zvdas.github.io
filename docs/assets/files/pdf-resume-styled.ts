@@ -327,7 +327,7 @@ export async function PdfResumeStyled() {
                                                 style: 'bodySectionTitle'
                                             },
                                             {
-                                                text: 'June 2023 -  Present',
+                                                text: 'June 2023 -  July 2026',
                                                 style: 'durationSection'
                                             }
                                         ]
