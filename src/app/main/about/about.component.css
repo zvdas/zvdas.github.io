@@ -1,172 +1,27 @@
-@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap");
+/* Page-specific layout. Tokens, type and the .page/.button/.label primitives live in styles.css. */
 
-:host {
-  --mainTextColor: var(--mainTextColor-dark);
-  --secondaryTextColor: var(--secondaryTextColor-dark);
-  --mainLinkColor: var(--mainLinkColor-dark);
-  --mainBorderColor: var(--mainBorderColor-dark);
-  --mainBgColor: var(--mainBgColor-dark);
-}
+/* Work and project groups share a two-column row: label on the left, detail on the right */
+.roles { display: flex; flex-direction: column; gap: 48px; }
+.groups { display: flex; flex-direction: column; gap: 40px; }
+.row { display: grid; grid-template-columns: 11rem 1fr; gap: 8px 32px; }
+.row > * { min-width: 0; }
+.meta { font-size: 14px; font-variant-numeric: tabular-nums; padding-top: 3px; }
 
-/* 
-* {
-  font-family: "Readex Pro";
-  line-height: 1.5em;
-  box-sizing: border-box;
-  color: var(--mainTextColor);
-} 
-*/
+.highlights { padding-left: 1.1em; display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
 
-p,
-span,
-li {
-  color: var(--secondaryTextColor);
-  font-size: 1em;
-}
+.projects { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.projects span { display: block; font-size: 14px; }
 
-a {
-  text-decoration: none;
-  color: var(--mainLinkColor);
-  font-weight: 500;
-}
+.tools { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; }
+.tools li { max-width: none; }
+.tools li:not(:last-child)::after { content: "·"; padding-inline: 12px; }
 
-li {
-  line-height: 1.9em;
-}
-
-#container--main {
-  background-color: var(--mainBgColor);
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 1em;
-
-  font-family: "Readex Pro";
-  line-height: 1.5em;
-  box-sizing: border-box;
-  color: var(--mainTextColor);
-}
-
-.section--page {
-  padding-top: 1em;
-  padding-bottom: 1em;
-}
-
-#wrapper--hero {
-  display: flex;
-  align-items: center;
-  gap: 4em;
-}
-
-#bio,
-a {
-  font-weight: 300;
-}
-
-#user-name {
-  font-size: 48px;
-  line-height: 1em;
-}
-
-#profile-pic {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-#email {
-  color: var(--mainTextColor);
-}
-
-#socials--list {
-  display: flex;
-  justify-content: space-between;
-  column-gap: 1em;
-  flex-wrap: wrap;
-}
-
-#socials--list a {
-  font-weight: 300;
-  color: var(--secondaryTextColor);
-  font-size: 0.9em;
-  transition: 0.3s;
-}
-
-#socials--list a:hover {
-  font-weight: 100;
-  color: var(--mainLinkColor);
-  font-size: 0.9em;
-}
-
-#qualifications--list {
-  list-style: none;
-}
-
-#wrapper--techstack__items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  font-size: 0.9em;
-}
-
-.card--techstack {
-  border: 1px solid var(--mainBorderColor);
-  border-radius: 5px;
-  padding: 0.5em 1em;
-  align-items: center;
-}
-
-.card--project {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  border-top: 1px solid var(--mainBorderColor);
-}
-
-.card--project a {
-  color: var(--mainTextColor);
-
-  transition: 0.3s;
-}
-
-.card--project a:hover {
-  color: rgb(30, 190, 214);
-}
-
-.card--work-history {
-  border-left: 1px solid var(--mainBorderColor);
-  margin-top: 3em;
-  margin-bottom: 3em;
-  padding-left: 2em;
-}
-
-.line-break {
-  background-color: var(--mainBorderColor);
-  height: 1px;
-}
+.contact { gap: 32px; }
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+.email { font-weight: 600; overflow-wrap: anywhere; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+.status { font-size: 14px; min-height: 1.6em; }
 
 @media (max-width: 600px) {
-  .section--page {
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
-
-  #wrapper--hero {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-  }
-
-  #profile-pic {
-    width: 200px;
-    height: 200px;
-  }
-
-  #wrapper--hero {
-    flex-direction: column;
-  }
-
-  .card--work-history {
-    border-left: none;
-    padding-left: 0;
-  }
+  .row { grid-template-columns: 1fr; }
 }

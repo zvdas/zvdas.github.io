@@ -15,6 +15,7 @@ export class TemplateComponent implements OnInit {
   project: Project = {} as Project;
   t:number = NaN;
   screenshots: string[] = [];
+  current: number = 0;
   problem: string = '';
   writeup: string = '';
 
@@ -46,6 +47,13 @@ export class TemplateComponent implements OnInit {
 
   getSelectedScreenshot(index: number) {
     this.screenshots = this.ps.getScreenshots(index);
+    this.current = 0;
+  }
+
+  // Wraps around at either end
+  showScreenshot(index: number) {
+    const total = this.screenshots.length;
+    this.current = (index + total) % total;
   }
 
   getSelectedProblem(index: number) {

@@ -1,6 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { PdfResume } from 'src/assets/files/pdf-resume';
-import { PdfResumeStyled } from 'src/assets/files/pdf-resume-styled';
+import { Component } from '@angular/core';
+
+interface Role {
+  title: string;
+  dates: string;
+  highlights: string[];
+}
+
+interface ProjectLink {
+  name: string;
+  summary: string;
+  route: string;
+}
+
+interface ProjectGroup {
+  stack: string;
+  projects: ProjectLink[];
+}
 
 @Component({
   selector: 'app-about',
@@ -8,44 +23,79 @@ import { PdfResumeStyled } from 'src/assets/files/pdf-resume-styled';
   styleUrls: ['./about.component.css']
 })
 
-export class AboutComponent implements OnInit {
+export class AboutComponent {
 
-  techStack: string[] = ['JavaScript', 'NodeJS', 'Express', 'React', 'Angular', 'Bootstrap', 'Angular Material', 'MongoDB', 'MySQL', 'REST APIs', 'Swagger', 'Postman'];
-  // Python,Django,Flask,FastAPI,Next JS
+  email: string = 'judeson.rodriguez@gmail.com';
+  copyStatus: string = '';
   yearsSpent: number = new Date().getFullYear() - 2023;
 
-  constructor() { }
-
-  ngOnInit(): void {
-    let hostStyle = document.documentElement.style;
-    hostStyle.setProperty('--mainTextColor-dark', '#000');
-    hostStyle.setProperty('--secondaryTextColor-dark', 'rgb(51 51 51)');
-    hostStyle.setProperty('--mainLinkColor-dark', '#0da2b8');
-    hostStyle.setProperty('--mainBorderColor-dark', 'rgb(218, 218, 218)');
-    hostStyle.setProperty('--mainBgColor-dark', 'rgb(249, 250, 251)');
-  }
-
-  switchTheme(e: any) {
-    if (e.target.checked) {
-      let hostStyle = document.documentElement.style;
-      hostStyle.setProperty('--mainTextColor-dark', '#fff');
-      hostStyle.setProperty('--secondaryTextColor-dark', '#adb0b1');
-      hostStyle.setProperty('--mainLinkColor-dark', 'rgb(30, 190, 214)');
-      hostStyle.setProperty('--mainBorderColor-dark', '#2b3031');
-      hostStyle.setProperty('--mainBgColor-dark', '#131415');
-    } else {
-      let hostStyle = document.documentElement.style;
-      hostStyle.setProperty('--mainTextColor-dark', '#000');
-      hostStyle.setProperty('--secondaryTextColor-dark', 'rgb(51 51 51)');
-      hostStyle.setProperty('--mainLinkColor-dark', '#0da2b8');
-      hostStyle.setProperty('--mainBorderColor-dark', 'rgb(218, 218, 218)');
-      hostStyle.setProperty('--mainBgColor-dark', 'rgb(249, 250, 251)');
+  roles: Role[] = [
+    {
+      title: 'Technical lead, ThinkTac',
+      dates: 'Jan 2025 – Jul 2026',
+      highlights: [
+        'Mentored 5 developers on Angular and TypeScript, cutting onboarding time by 40%.',
+        'Shipped a student dashboard, assessment engine and analytics module for 5,000+ active users at 99.5% uptime.',
+        'Moved 15 Angular components to strict TypeScript and cut runtime errors by 45%.'
+      ]
+    },
+    {
+      title: 'Full stack developer, ThinkTac',
+      dates: 'Jun 2023 – Jan 2025',
+      highlights: [
+        'Built a real-time enrollment system on Firebase Auth and Firestore for 2,000+ concurrent users under 300ms.',
+        'Wrote 10+ Cloud Functions in Node.js that handle 50,000+ events a day.',
+        'Cut page load from 4.2s to 2.5s with lazy loading and tree shaking.'
+      ]
+    },
+    {
+      title: 'SDE intern, Angular Wiki',
+      dates: 'Nov 2022 – May 2023',
+      highlights: [
+        'Built a drug inventory module tracking 200+ products in real time with Angular Material and RxJS.',
+        'Generated compliance reports for 500+ monthly prescription orders with pdfmake.'
+      ]
     }
-  }
+  ];
 
-  async generatePdf() {
-    // PdfResume();
-    PdfResumeStyled();
+  projectGroups: ProjectGroup[] = [
+    {
+      stack: 'Angular + Firebase',
+      projects: [
+        { name: 'Online test app', summary: 'Users take and review online tests', route: '#/details/0/ota' },
+        { name: 'Blog app', summary: 'Users read and add blog posts', route: '#/details/1/fba' },
+        { name: '3D model app', summary: 'Upload, list and render 3D models with Three.js', route: '#/details/2/tma' }
+      ]
+    },
+    {
+      stack: 'React + Redux + Firebase',
+      projects: [
+        { name: 'Event finder', summary: 'Users view and promote upcoming events', route: '#/details/3/efa' },
+        { name: 'Pokémon search', summary: 'Search for Pokémon and their details', route: '#/details/4/psa' }
+      ]
+    },
+    {
+      stack: 'Express + MongoDB',
+      projects: [
+        { name: 'Learning management system', summary: 'Registration, courses and enrollment', route: '#/details/5/lms' },
+        { name: 'Online music store', summary: 'Manage a personal music library', route: '#/details/6/oms' }
+      ]
+    }
+  ];
+
+  tools: string[] = ['TypeScript', 'Angular', 'Angular Material', 'React', 'Node.js', 'Express', 'Firebase', 'MongoDB', 'MySQL', 'REST APIs', 'Swagger', 'Postman'];
+
+  copyEmail(emailEl: HTMLElement) {
+    navigator.clipboard.writeText(this.email).then(
+      () => this.copyStatus = 'Copied to your clipboard.',
+      () => {
+        const range = document.createRange();
+        range.selectNodeContents(emailEl);
+        window.getSelection()?.removeAllRanges();
+        window.getSelection()?.addRange(range);
+        this.copyStatus = 'Address selected. Press Ctrl+C or Cmd+C to copy it.';
+      }
+    );
   }
 
 }

@@ -1,62 +1,34 @@
-<div class="container">
-    <h1 class="text-center text-white">{{ project.project_name }}</h1>
+<div class="page">
+    <section class="hero" aria-label="Project">
+        <h1>{{ project.project_name }}</h1>
+        <p *ngIf="project.live_note">{{ project.live_note }}</p>
+        <a class="button" [href]="project.live_url" target="_blank" rel="noopener noreferrer">Open the live app</a>
+    </section>
 
-    <div [innerHTML]="project.message"></div>
-
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-inner">
-            <div *ngFor="let screenshot of screenshots; let i = index; first as isFirst" [ngClass]="isFirst?'carousel-item active':'carousel-item'" style="height: 500px;">
-                <img src={{screenshot}} class="d-block w-100" alt="...">
-            </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
-
-    <div class="accordion accordion-flush my-2" id="headingMain">
-        <div class="accordion-item">
-            <h3 class="accordion-header" id="headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Problem Statement
-                </button>
-            </h3>
-            <div class="accordion-collapse collapse" id="collapseOne" aria-labelledby="headingOne" data-bs-parent="headingMain">
-                <div class="accordion-body">
-                    <div [innerHTML]="problem"></div>
-                </div>
-            </div>
+    <section *ngIf="screenshots.length" aria-labelledby="screenshots-h">
+        <h2 id="screenshots-h" class="label">Screenshots</h2>
+        <figure>
+            <img [src]="screenshots[current]" [alt]="'Screenshot ' + (current + 1) + ' of ' + project.project_name">
+        </figure>
+        <div class="controls">
+            <button class="button" type="button" (click)="showScreenshot(current - 1)">Previous screenshot</button>
+            <span class="counter" aria-live="polite">{{ current + 1 }} of {{ screenshots.length }}</span>
+            <button class="button" type="button" (click)="showScreenshot(current + 1)">Next screenshot</button>
         </div>
+    </section>
 
-        <div class="accordion-item">
-            <h3 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Code
-                </button>
-            </h3>
-            <div class="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headingTwo" data-bs-parent="headingMain">
-                <div class="accordion-body">
-                    <iframe #iframe type="text/javascript" width="100%" height="350"></iframe>
-                </div>
-            </div>
-        </div>
+    <section aria-labelledby="brief-h">
+        <h2 id="brief-h" class="label">The brief</h2>
+        <div class="prose" [innerHTML]="problem"></div>
+    </section>
 
-        <div class="accordion-item">
-            <h3 class="accordion-header" id="headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Procedure
-                </button>
-            </h3>
-            <div class="accordion-collapse collapse" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="headingMain">
-                <div class="accordion-body">
-                    <div [innerHTML]="writeup"></div>
-                </div>
-            </div>
-        </div>
+    <section aria-labelledby="code-h">
+        <h2 id="code-h" class="label">Code</h2>
+        <iframe #iframe [title]="'Source code for ' + project.project_name"></iframe>
+    </section>
 
-    </div>
+    <section aria-labelledby="procedure-h">
+        <h2 id="procedure-h" class="label">How I built it</h2>
+        <div class="prose" [innerHTML]="writeup"></div>
+    </section>
 </div>

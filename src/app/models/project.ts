@@ -2,7 +2,8 @@ export interface Project {
   project_name: string;
   problem: string;
   problem_link: string;
-  message: string;
+  live_url: string;
+  live_note: string;
   screenshots: string[];
   screenshots_app: string;
   screenshots_branch: string;

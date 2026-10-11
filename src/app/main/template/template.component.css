@@ -1,0 +1,47 @@
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+}
+
+.counter { font-size: 14px; font-variant-numeric: tabular-nums; }
+
+iframe {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border: 0;
+    background: var(--surface);
+}
+
+/* The brief and write-up are HTML files injected with innerHTML, so they need ::ng-deep to be styled */
+.prose { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.prose ::ng-deep p,
+.prose ::ng-deep ul,
+.prose ::ng-deep ol { margin: 0; }
+.prose ::ng-deep p,
+.prose ::ng-deep li { max-width: 62ch; }
+.prose ::ng-deep ul,
+.prose ::ng-deep ol { padding-left: 1.2em; display: flex; flex-direction: column; gap: 8px; }
+.prose ::ng-deep strong,
+.prose ::ng-deep b { font-weight: 600; }
+.prose ::ng-deep code {
+    font-family: var(--font);
+    font-size: 15px;
+    color: var(--text);
+    background: var(--surface);
+    padding: 1px 6px;
+    overflow-wrap: anywhere;
+}
+.prose ::ng-deep img { max-width: 100%; height: auto; }
+.prose ::ng-deep table { display: block; overflow-x: auto; border-collapse: collapse; }
+.prose ::ng-deep th,
+.prose ::ng-deep td { border: 1px solid var(--text); padding: 6px 12px; text-align: left; }
+.prose ::ng-deep th { font-weight: 600; }

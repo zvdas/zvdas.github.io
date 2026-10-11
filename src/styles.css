@@ -2,21 +2,87 @@
 
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-body {
-    background-image: url('https://images.unsplash.com/photo-1629197521865-4946b4acd2b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=825&q=80');
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: 100% calc(100%);
-    /* background-color: royalblue; */
-    /*
-        attribute
-        Photo by Kseniya Lapteva on Unsplash
-        https://unsplash.com/photos/A4rqd2g-eLo?utm_source=unsplash&utm_medium=referral&utm_content=creditShareLink
-    */
+/* House style tokens. Every color on the site comes from these four. Sora is loaded in index.html. */
+:root {
+    --bg: #EEF1F4;
+    --text: #12233A;
+    --accent: #1E8E5A;
+    --surface: #FFFFFF;
+    --font: "Sora", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --section-gap: 96px;
 }
 
-.accordion-button {
-    border-color: #7c7c7c;    
-    background: linear-gradient(top, rgba(38, 38, 38, 0.8), #e6e6e6 25%, #ffffff 38%, #c5c5c5 63%, #f7f7f7 87%, rgba(38, 38, 38, 0.8));
-    background: -webkit-linear-gradient(top, rgba(38, 38, 38, 0.5), #e6e6e6 25%, #ffffff 38%, rgba(0, 0, 0, 0.25)  63%, #e6e6e6 87%, rgba(38, 38, 38, 0.4));
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.6;
 }
+
+a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+}
+a:hover { color: var(--accent); text-decoration-thickness: 2px; }
+a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+    box-shadow: none;
+}
+
+/* Shared page primitives, used by every page component */
+.page-width {
+    max-width: 880px;
+    margin-inline: auto;
+    padding-inline: 24px;
+}
+
+.page {
+    max-width: 880px;
+    margin-inline: auto;
+    padding-inline: 24px;
+    padding-block: var(--section-gap);
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+}
+
+.page h1, .page h2, .page h3, .page p, .page ul, .page ol, .page figure { margin: 0; }
+
+.page h1 {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    max-width: 20ch;
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+
+.page h2, .page h3 { font-size: 17px; font-weight: 600; line-height: 1.6; text-wrap: balance; }
+.page strong, .page b { font-weight: 600; }
+.page p, .page li { max-width: 62ch; }
+.page section { display: flex; flex-direction: column; gap: 24px; }
+
+.page .hero { display: flex; flex-direction: column; align-items: flex-start; gap: 40px; }
+
+.label { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+.button {
+    display: inline-block;
+    font: 600 17px/1 var(--font);
+    color: var(--surface);
+    background: var(--accent);
+    border: 0;
+    border-radius: 999px;
+    padding: 16px 28px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.button:hover { color: var(--surface); text-decoration: underline; text-underline-offset: 4px; }
+
+.rule { border: 0; border-top: 1px solid var(--text); margin: 0; opacity: 1; }
