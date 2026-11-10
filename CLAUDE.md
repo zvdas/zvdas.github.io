@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal portfolio site for Judeson Brian Rodriguez (zvdas) — a single-page Angular 13 application that doubles as both a CV/About page and a project showcase. Built to be deployed to GitHub Pages under a custom domain.
+Personal portfolio site for Judeson Brian Caleb Rodriguez (zvdas) — a single-page Angular 13 application that doubles as both a CV/About page and a project showcase. Built to be deployed to GitHub Pages under a custom domain.
 
 ## Commands
 
