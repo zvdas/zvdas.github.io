@@ -6,7 +6,6 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TemplateComponent } from './template/template.component';
 import { AboutComponent } from './about/about.component';
-import { AboutOriginalComponent } from './about_original/about_original.component';
 import { ErrorComponent } from './error/error.component';
 import { MessagesComponent } from './messages/messages.component';
 
@@ -16,7 +15,6 @@ import { MessagesComponent } from './messages/messages.component';
     NavbarComponent,
     TemplateComponent,
     AboutComponent,
-    AboutOriginalComponent,
     ErrorComponent,
     MessagesComponent
   ],

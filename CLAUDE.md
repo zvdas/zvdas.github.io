@@ -50,7 +50,7 @@ Project metadata is stored as a static JSON file at `src/assets/files/project.js
 
 ### Resume generation
 
-`src/assets/files/pdf-resume.ts` and `pdf-resume-styled.ts` define pdfmake document definitions that generate a PDF resume client-side in the browser. Currently only `PdfResumeStyled()` is called from `AboutComponent.generatePdf()`; the static PDF at `src/assets/files/Resume Judeson Rodriguez Full Stack Developer.pdf` is the one linked from the about page. There's also a `pdf-resume-2026.ts` exporting `PdfResume2026()` that isn't wired up anywhere yet — treat it as staged/in-progress, not dead code to delete.
+There is no client-side resume generation any more (the old pdfmake definitions and the `/about_original` route were removed in KAN-31). The about page links a static PDF, `src/assets/files/Resume Judeson Rodriguez Technical Lead.pdf`, exported from the Word resume. The resume is the source of truth for every career claim on the site: work history and figures in `AboutComponent` must come from it, not be added independently.
 
 ## Important conventions
 

@@ -32,28 +32,25 @@ export class AboutComponent {
   roles: Role[] = [
     {
       title: 'Technical lead, ThinkTac',
-      dates: 'Jan 2025 – Jul 2026',
+      dates: 'Jun 2023 – Jul 2026',
       highlights: [
-        'Mentored 5 developers on Angular and TypeScript, cutting onboarding time by 40%.',
-        'Shipped a student dashboard, assessment engine and analytics module for 5,000+ active users at 99.5% uptime.',
-        'Moved 15 Angular components to strict TypeScript and cut runtime errors by 45%.'
-      ]
-    },
-    {
-      title: 'Full stack developer, ThinkTac',
-      dates: 'Jun 2023 – Jan 2025',
-      highlights: [
-        'Built a real-time enrollment system on Firebase Auth and Firestore for 2,000+ concurrent users under 300ms.',
-        'Wrote 10+ Cloud Functions in Node.js that handle 50,000+ events a day.',
-        'Cut page load from 4.2s to 2.5s with lazy loading and tree shaking.'
+        'Promoted from full stack developer to technical lead in January 2025.',
+        'Led a team of five developers: set technical direction, made architecture decisions, and mentored developers through implementation blockers and production issues.',
+        'Reviewed junior developers’ code after peer review and before the manager’s final review.',
+        'Introduced a separate Firebase test environment, so features were validated before they reached production.',
+        'Designed the multi-project architecture that let several applications share Angular components and Firebase logic instead of duplicating them.',
+        'Built ScriptRunner, a Node.js tool for Firestore data operations that all five developers used across projects, and wrote 50–60 of its task scripts.',
+        'Co-built a dynamic contest system that removed the per-year collections and yearly code changes.',
+        'Integrated client APIs and built meeting tools on the Google Meet and Calendar APIs with Gemini-generated summaries.'
       ]
     },
     {
       title: 'SDE intern, Angular Wiki',
       dates: 'Nov 2022 – May 2023',
       highlights: [
-        'Built a drug inventory module tracking 200+ products in real time with Angular Material and RxJS.',
-        'Generated compliance reports for 500+ monthly prescription orders with pdfmake.'
+        'Built an Angular Material and RxJS drug-inventory module with real-time stock tracking.',
+        'Automated prescription compliance reports with pdfmake.',
+        'Wrote Python scripts (BeautifulSoup, Selenium) to collect pharmaceutical product data.'
       ]
     }
   ];
@@ -83,7 +80,7 @@ export class AboutComponent {
     }
   ];
 
-  tools: string[] = ['TypeScript', 'Angular', 'Angular Material', 'React', 'Node.js', 'Express', 'Firebase', 'MongoDB', 'MySQL', 'REST APIs', 'Swagger', 'Postman'];
+  tools: string[] = ['TypeScript', 'Angular', 'RxJS', 'Angular Material', 'Node.js', 'Firebase Cloud Functions', 'Firestore', 'Firebase Authentication', 'REST APIs', 'Google Workspace APIs', 'Gemini API', 'SQL', 'Git', 'Postman', 'Python', 'Express', 'MongoDB', 'React'];
 
   copyEmail(emailEl: HTMLElement) {
     navigator.clipboard.writeText(this.email).then(

@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from './main/about/about.component';
-import { AboutOriginalComponent } from './main/about_original/about_original.component';
 import { MessagesComponent } from './main/messages/messages.component';
 import { ErrorComponent } from './main/error/error.component';
 import { TemplateComponent } from './main/template/template.component';
 
 const routes: Routes = [
   { path:'home', component: AboutComponent },
-  { path:'about_original', component: AboutOriginalComponent },
   { path:'details/:id/:code', component: TemplateComponent },
   /*
   // all routes moved to TemplateComponent with path as code in params
