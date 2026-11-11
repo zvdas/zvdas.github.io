@@ -19,3 +19,22 @@ Fix: separate groups per branch, and only PR runs can be cancelled. Also let man
 Fix: flushed the DNS cache. The new address had already spread; only my machine was behind.
 
 Lesson: "the pipeline is green" doesn't mean "the change is live". Check the live site, and know which server your domain actually points to.
+
+## 11 Nov 2026: What a recruiter sees when they Google me (KAN-36)
+
+**Search results told an old story.** Google showed my site as "Portfolio" with stale text ("currently a Tech Lead"), and "zvdas" mostly returned the film Devdas.
+Fix: gave the page a real title, meta description, canonical URL and schema.org Person data linking zvdas.com, GitHub and LinkedIn as one person. Verified zvdas.com in Google Search Console and requested re-indexing.
+
+**Third-party sites had outdated or private details.** AeroLeads (a data broker) listed my email and phone; Giglancer had an old "Technical Lead" profile with no delete option.
+Fix: AeroLeads removal form (gone within 7 days); GDPR deletion request emailed to Bizoforce, found via their privacy policy.
+
+**Search Console verification failed the first time.** Google found only the email SPF record, not my new TXT record.
+Fix: nothing. DNS changes take a few minutes to spread. Checked with dns.google, then verified again and it passed.
+
+**Profiles disagreed with each other.** GitHub README said Angular + Firebase; site and LinkedIn said senior full stack.
+Fix: rewrote the GitHub README from the resume, so every profile tells the same story.
+
+**Found a real gap:** the site uses hash routing (#/home), so Google treats every project page as one URL, and content is built in the browser.
+Next: proper routes and pre-rendering after the Angular upgrade (KAN-26).
+
+Lesson: my online presence is a system, not a page. Search engines need clear signals (title, description, structured data), and every profile has to agree with the resume.
